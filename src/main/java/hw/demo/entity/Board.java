@@ -4,7 +4,9 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 
 @Table
@@ -22,10 +24,14 @@ public class Board {
     @Column(name="BOARD_ID")
     private int id;
     private String name;
+    private String title;
+    private String content;
     private int count;
     private LocalDateTime firstCreate;
     private LocalDateTime SecondCreate;
 
 
+    @OneToMany(mappedBy = "board")
+    private List<Comment> commentList = new ArrayList<Comment>();
 
 }
