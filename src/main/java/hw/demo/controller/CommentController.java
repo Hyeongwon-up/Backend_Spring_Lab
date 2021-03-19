@@ -6,12 +6,14 @@ import hw.demo.dto.CommentReqDto;
 import hw.demo.entity.Comment;
 import hw.demo.service.BoardService;
 import hw.demo.service.CommentService;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+@Api(tags = {"2.Comment"})
 @RestController
 public class CommentController {
 
@@ -26,7 +28,6 @@ public class CommentController {
     @PostMapping("/Comment/{boardId}")
     public void createComment(@PathVariable int boardId, CommentReqDto commentReqDto) {
         Comment comment = commentReqDto.toEntity();
-        comment.setBoard(boardRepository.findById(boardId).get());
-        commentService.createComment(commentReqDto);
+        commentService.createComment(boardId,commentReqDto);
     }
 }

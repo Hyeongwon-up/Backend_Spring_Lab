@@ -18,9 +18,13 @@ public class CommentService {
     @Autowired
     CommentRepository commentRepository;
 
+    @Autowired
+    BoardService boardService;
 
-    public Comment createComment(CommentReqDto commentReqDto) {
+
+    public Comment createComment(int id , CommentReqDto commentReqDto) {
         Comment comment = commentReqDto.toEntity();
+        comment.setBoard(boardService.findPostById(id));
         commentRepository.save(comment);
         return comment;
     }

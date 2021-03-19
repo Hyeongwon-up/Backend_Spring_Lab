@@ -1,5 +1,6 @@
 package hw.demo.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.*;
 
 import javax.persistence.*;
@@ -16,6 +17,7 @@ import java.util.List;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
+
 public class Board {
 
 
@@ -32,6 +34,7 @@ public class Board {
 
 
     @OneToMany(mappedBy = "board")
+    @JsonManagedReference
     private List<Comment> commentList = new ArrayList<Comment>();
 
 }

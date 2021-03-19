@@ -31,11 +31,15 @@ class BoardServiceTest {
         boardService.createPost(boardDto);
 
         Board find = boardRepository.findByName("이형원").get();
-        System.out.println(find);
-        System.out.println("######");
-        System.out.println(boardDto);
+
         Assertions.assertEquals(boardDto.getName(), find.getName() );
 
+    }
+
+    @Test
+    void 아이디로글찾기() {
+        Board board2 = boardService.findPostById(1);
+        Assertions.assertEquals(1, board2.getId());
     }
 
 }
