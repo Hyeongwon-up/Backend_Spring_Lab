@@ -11,7 +11,6 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CommentReqDto {
-
     private String commentName;
     private String commentContent;
 

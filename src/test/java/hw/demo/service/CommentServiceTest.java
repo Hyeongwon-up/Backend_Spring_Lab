@@ -39,7 +39,6 @@ class CommentServiceTest {
         BoardDto boardDto = new BoardDto();
         boardDto.setName("testName1");
         boardDto.setTitle("testTitle1");
-        boardDto.setCount(3);
         Board check = boardService.createPost(boardDto);
 
 

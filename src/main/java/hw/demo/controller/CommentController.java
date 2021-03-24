@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @Api(tags = {"2.Comment"})
 @RestController
 public class CommentController {
@@ -29,5 +31,11 @@ public class CommentController {
     public void createComment(@PathVariable int boardId, CommentReqDto commentReqDto) {
         Comment comment = commentReqDto.toEntity();
         commentService.createComment(boardId,commentReqDto);
+    }
+
+    @GetMapping("/Comment/{boardId}")
+    public List<Comment> findComment(@PathVariable int boardId) {
+        List<Comment> commentList = commentService.findComment(boardId);
+        return commentList;
     }
 }
